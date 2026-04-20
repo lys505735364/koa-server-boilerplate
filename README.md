@@ -1,4 +1,4 @@
-# Koa Server CLI
+# Koa Server Boilerplate
 
 > 🚀 基于 Koa 3 + Sequelize + Redis 的企业级后端脚手架，开箱即用的 RESTful API 服务框架
 
@@ -174,6 +174,7 @@ koa-server/
 ### 1. 用户认证系统示例
 
 #### 注册
+
 ```bash
 POST /api/login/register
 Content-Type: application/json
@@ -187,11 +188,13 @@ Content-Type: application/json
 ```
 
 #### 获取图形验证码
+
 ```bash
 GET /api/login/captcha
 ```
 
 #### 登录
+
 ```bash
 POST /api/login/login
 Content-Type: application/json
@@ -203,6 +206,7 @@ Content-Type: application/json
 ```
 
 #### 退出登录
+
 ```bash
 POST /api/login/logout
 Authorization: Bearer <token>
@@ -211,12 +215,14 @@ Authorization: Bearer <token>
 ### 2. 房产认证流程示例
 
 #### 获取可绑定房产列表
+
 ```bash
 GET /api/auth/available-houses?ownerId=1
 Authorization: Bearer <token>
 ```
 
 #### 绑定房产（认证）
+
 ```bash
 POST /api/auth/bind-house
 Authorization: Bearer <token>
@@ -297,6 +303,7 @@ GET /api/house/list?page=1&pageSize=10&communityId=1
 ### 6. 业主-房产关系管理示例
 
 #### 业主视角
+
 ```bash
 # 绑定房产
 POST /api/owner-house/bind
@@ -315,6 +322,7 @@ GET /api/owner-house/owner-houses?ownerId=1
 ```
 
 #### 房产视角
+
 ```bash
 # 添加产权人
 POST /api/house-owner/add
@@ -458,29 +466,32 @@ const { success, fail } = require('../utils/responseBody');
 
 const createExample = async (params) => {
   const { name } = params;
-  
+
   const example = await ExampleModel.create({ name });
   logger.info(`创建示例成功: ID=${example.id}`);
-  
+
   return success(example, '创建成功');
 };
 
 const getExampleList = async (page = 1, pageSize = 10) => {
   const offset = (page - 1) * pageSize;
-  
+
   const { count, rows } = await ExampleModel.findAndCountAll({
     where: { isDelete: 0 },
     limit: pageSize,
     offset,
     order: [['createAt', 'DESC']],
   });
-  
-  return success({
-    list: rows,
-    total: count,
-    page,
-    pageSize,
-  }, '获取成功');
+
+  return success(
+    {
+      list: rows,
+      total: count,
+      page,
+      pageSize,
+    },
+    '获取成功'
+  );
 };
 
 module.exports = {
@@ -522,7 +533,7 @@ const createExample = async (ctx) => {
 
 const getExampleList = async (ctx) => {
   const { page = 1, pageSize = 10 } = ctx.query;
-  
+
   try {
     ctx.body = await ExampleService.getExampleList(page, pageSize);
   } catch (err) {
@@ -556,11 +567,11 @@ Controller 导出的对象格式：
 ```javascript
 module.exports = {
   '/path/to/endpoint': {
-    method: 'GET',           // HTTP 方法（GET/POST/PUT/DELETE/PATCH）
-    handler: yourFunction,   // 处理函数
-    requiresAuth: true,      // 是否需要登录（默认 true）
-    permission: 'admin',     // 权限标识（可选）
-    upload: true,            // 是否启用文件上传（可选）
+    method: 'GET', // HTTP 方法（GET/POST/PUT/DELETE/PATCH）
+    handler: yourFunction, // 处理函数
+    requiresAuth: true, // 是否需要登录（默认 true）
+    permission: 'admin', // 权限标识（可选）
+    upload: true, // 是否启用文件上传（可选）
   },
 };
 ```
@@ -578,13 +589,13 @@ const { sequelize } = require('../model/index');
 
 const multiTableOperation = async (params) => {
   const transaction = await sequelize.transaction();
-  
+
   try {
     // 所有数据库操作传入 transaction
     await Model1.create(..., { transaction });
     await Model2.update(..., { transaction });
     await Model3.destroy(..., { transaction });
-    
+
     // 提交事务
     await transaction.commit();
     return success(null, '操作成功');
@@ -601,28 +612,28 @@ const multiTableOperation = async (params) => {
 
 ## 🛠️ 技术栈
 
-| 类别 | 技术 | 版本 |
-|------|------|------|
-| **运行时** | Node.js | >= 16.0 |
-| **Web 框架** | Koa | 3.x |
-| **路由** | @koa/router | 15.x |
-| **ORM** | Sequelize | 6.x |
-| **数据库** | MySQL | >= 5.7 |
-| **缓存** | Redis (ioredis) | 5.x |
-| **认证** | JSON Web Token | 9.x |
-| **密码加密** | bcryptjs | 3.x |
-| **参数校验** | Joi | 18.x |
-| **验证码** | svg-captcha | 1.x |
-| **日志** | Pino | 10.x |
-| **WebSocket** | ws | 8.x |
-| **HTTP 客户端** | Axios | 1.x |
-| **日期处理** | Day.js | 1.x |
-| **安全** | Helmet | 9.x |
-| **CORS** | @koa/cors | 5.x |
-| **压缩** | koa-compress | 5.x |
-| **限流** | koa-ratelimit | 6.x |
-| **开发工具** | Nodemon | 3.x |
-| **代码格式化** | Prettier | 3.x |
+| 类别            | 技术            | 版本    |
+| --------------- | --------------- | ------- |
+| **运行时**      | Node.js         | >= 16.0 |
+| **Web 框架**    | Koa             | 3.x     |
+| **路由**        | @koa/router     | 15.x    |
+| **ORM**         | Sequelize       | 6.x     |
+| **数据库**      | MySQL           | >= 5.7  |
+| **缓存**        | Redis (ioredis) | 5.x     |
+| **认证**        | JSON Web Token  | 9.x     |
+| **密码加密**    | bcryptjs        | 3.x     |
+| **参数校验**    | Joi             | 18.x    |
+| **验证码**      | svg-captcha     | 1.x     |
+| **日志**        | Pino            | 10.x    |
+| **WebSocket**   | ws              | 8.x     |
+| **HTTP 客户端** | Axios           | 1.x     |
+| **日期处理**    | Day.js          | 1.x     |
+| **安全**        | Helmet          | 9.x     |
+| **CORS**        | @koa/cors       | 5.x     |
+| **压缩**        | koa-compress    | 5.x     |
+| **限流**        | koa-ratelimit   | 6.x     |
+| **开发工具**    | Nodemon         | 3.x     |
+| **代码格式化**  | Prettier        | 3.x     |
 
 ---
 
