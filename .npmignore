@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.production
+.env.example
+
+# Git
+.git/
+.gitignore
+
+# Documentation (optional - include if you want)
+# README.md
+PUBLISH_GUIDE.md
+# LICENSE
+
+# SQL examples (optional - remove this line if you want to include sql/)
+sql/
+
+# Tests
+test/
+*.test.js
+*.spec.js
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Upload directory
+uploadDir/
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Build output
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
