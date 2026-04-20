@@ -16,11 +16,11 @@
   "author": "LYS <lys505735364@163.com>",
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/lys505735364/koa-server-boilerplate.git"
+    "url": "https://github.com/lys505735364/koa-server-boilerplate.git"
   },
-  "homepage": "https://gitee.com/lys505735364/koa-server-boilerplate#readme",
+  "homepage": "https://github.com/lys505735364/koa-server-boilerplate#readme",
   "bugs": {
-    "url": "https://gitee.com/lys505735364/koa-server-boilerplate/issues"
+    "url": "https://github.com/lys505735364/koa-server-boilerplate/issues"
   },
   "type": "commonjs",
   "main": "app.js",

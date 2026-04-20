@@ -2,6 +2,8 @@
 
 > 🚀 基于 Koa 3 + Sequelize + Redis 的企业级后端脚手架，开箱即用的 RESTful API 服务框架
 
+[![npm version](https://badge.fury.io/js/koa-server-boilerplate.svg)](https://www.npmjs.com/package/koa-server-boilerplate)
+[![npm downloads](https://img.shields.io/npm/dm/koa-server-boilerplate.svg)](https://www.npmjs.com/package/koa-server-boilerplate)
 [![License](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D16.0-green.svg)](https://nodejs.org/)
 [![Koa](https://img.shields.io/badge/koa-3.x-brightgreen.svg)](https://koajs.com/)
@@ -46,8 +48,8 @@
 
 ```bash
 # 克隆项目
-git clone <your-repo-url>
-cd koa-server
+git clone https://github.com/lys505735364/koa-server-boilerplate.git
+cd koa-server-boilerplate
 
 # 安装依赖
 npm install
@@ -810,7 +812,7 @@ LYS - [GitHub Profile](your-github-url)
 如有问题或建议，请通过以下方式联系：
 
 - 📧 Email: lys505735364@163.com
-- 💬 Issues: [GitHub Issues](your-repo-issues-url)
+- 💬 Issues: [GitHub Issues](https://github.com/lys505735364/koa-server-boilerplate/issues)
 
 ---
 
